@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoTimer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./sal.js/dist/sal.css">
+    <link rel="stylesheet" href="final.css">
+    <link rel="shortcut icon" href="pomodoro.svg">
+</head>
+
+<body>
+
+
+    <div id="timerDiv" class="sticky " data-sal-duration="1200"
+                                        data-sal="slide-up"
+                                        data-sal-delay="100"
+                                        data-sal-easing="ease-in-out-back"
+    >
+        <div id="timerDisplay" class=" ">
+            <span id="minutes">00</span>
+            <span class="" id="dots">:</span>
+            <span id="seconds">00</span>
+
+        </div>
+
+        <div id="logoDiv">
+            <p id="logo">PomoTimer</p>
+        </div>
+        <div id="timerBtns" class="    ">
+
+            
+            <svg id="pauseBtn" class="svgBtn " xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#140128">
+                <path d="M360-840v-80h240v80H360ZM480-80q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80ZM360-280h80v-320h-80v320Zm160 0h80v-320h-80v320Z" />
+            </svg>
+            <svg id="restartBtn" class="svgBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#140128">
+                <path d="M440-122q-121-15-200.5-105.5T160-440q0-66 26-126.5T260-672l57 57q-38 34-57.5 79T240-440q0 88 56 155.5T440-202v80Zm80 0v-80q87-16 143.5-83T720-440q0-100-70-170t-170-70h-3l44 44-56 56-140-140 140-140 56 56-44 44h3q134 0 227 93t93 227q0 121-79.5 211.5T520-122Z" />
+            </svg>
+            <svg id="resumeBtn" class=" svgBtn " xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#140128">
+                <path d="M360-840v-80h240v80H360ZM480-80q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm-80-200 240-160-240-160v320Z" />
+            </svg>
+            <svg id="settingsBtn" class="svgBtn" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#140128">
+                <path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+            </svg>
+
+        </div>
+
+    </div>
+    <div id="currentStateParaDiv" data-sal-duration="1000"
+    data-sal="slide-up"
+    data-sal-delay="1000"
+    data-sal-easing="ease-in-out-back">
+        <p id="currentStatePara">Press the Start button!</p>
+    </div>
+    <div id="RadioFlex">
+        <div class="" id="subjectRadio">
+            
+        </div>
+    </div>
+    
+    <div id="allContent">
+
+        <div id="inputDiv" data-sal-duration="600"
+        data-sal="slide-up"
+        data-sal-delay="00"
+        data-sal-easing="ease-in-out-back">
+            <p class="textHeader">session Settings</p>
+            <div id="whereInputIS">
+                <div class="gridDiv">
+                    <svg class="inputSvg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                        <path d="M440-400h80v-280h-80v280Zm120-60h80v-180h-80v180Zm-240-20h80v-160h-80v160ZM240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l52 205q5 19-7 34.5T840-360h-80v120q0 33-23.5 56.5T680-160h-80v80h-80v-160h160v-200h108l-38-155q-23-91-98-148t-172-57q-116 0-198 81t-82 197q0 60 24.5 114t69.5 96l26 24v208h-80Zm254-360Z" />
+                    </svg>
+                    <h5 class="">session Length:</h5>
+                    <input class="rounded-pill inputStyle " type="number" name="sessionLength" id="sessionLength" min="25" max="50" value="50">
+                </div>
+                <div class="gridDiv">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inputSvg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                        <path d="M320-160h320v-120q0-66-47-113t-113-47q-66 0-113 47t-47 113v120Zm160-360q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z" />
+                    </svg>
+                    <h5 class="">break Length:</h5>
+                    <input class="rounded-pill inputStyle " type="number" name="breakLength" id="breakLength" min="5" max="10" value="10">
+                </div>
+                <div class="gridDiv">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inputSvg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                        <path d="M320-160h320v-120q0-66-47-113t-113-47q-66 0-113 47t-47 113v120Zm160-360q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z" />
+                    </svg>
+                    <h5 class="">long break Length</h5>
+                    <input class="rounded-pill inputStyle " type="number" name="longBreakLength" id="longBreakLength" min="5" max="30" value="15">
+                </div>
+            </div>
+            <div class="Setbtns">
+                <div class="addSubBtnDiv">
+                    <button type="button" class="btn btn-lg intiateBtn " id="addDiv" onclick="addSubjectInput()">add subject</button>
+                </div>
+
+                <div class="intiateBtnDiv">
+                    <button type="button" class="btn btn-lg intiateBtn " id="save" onclick="fetchData()">Save</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="vLine"></div>
+
+        <div class=" " id="statstics" data-sal-duration="600"
+        data-sal="slide-up"
+        data-sal-delay="00"
+        data-sal-easing="ease-in-out-back">
+
+            
+
+            
+
+
+            <p class="textHeader">Session Statstics</p>
+
+            <ul id="stats-ul">
+                <li class="my-2" id="sessionCompleted">"The journey of a thousand miles begins with a single step." - Lao Tzu</li>
+                <li class="my-2" id="breakCompleted">"The greatest glory in living lies not in never falling, but in rising every time we fall." - Nelson Mandela</li>
+                <li class="my-2" id="longCompleted">"Great things are done by a series of small things brought together." - Van Gogh</li>
+
+
+            </ul>
+
+
+        </div>
+        <div class="vLine"></div>
+        <div id="chartContainer" data-sal-duration="1000"
+        data-sal="slide-up"
+        data-sal-delay="00"
+        data-sal-easing="ease-in-out-back">
+            <div class="chartContainer">
+                <canvas id="myChart"></canvas>
+                
+            </div>
+            <div class="chartContainer">
+                <canvas id="secondChart"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="./sal.js/dist/sal.js"></script>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        sal();
+        // function textTyping(){
+        //var typed = new Typed('#demo', {
+        // strings: ['First, write your note in the input bar ', 'then , click save not to save the text to the note', 'you could edit the note as you wish', 'Finally hit the Save forever button to remove the input bar.','Remember to save the note first!!'],
+        // typeSpeed: 20,
+
+        //});
+        //}
+        //document.querySelector("#save").addEventListener("click", getSubjectNamesAndColors)
+        //making the sounds functionalty
+        let breakSound = new Audio('break.mp3')
+        let sessionSound = new Audio('session.mp3')
+        const currentStatePara = $("#currentStatePara")
+        var subIndex = 0
+        var subjectSessionCounts = [];
+        var lastTargetCount = 0
+        var subjectList = []
+        var subjectNames = []
+        var chartBackColorList = []
+        var theChart = 0
+        var graphTwo = 0
+        var sessionCount = 0
+        const sessionCompleted = $("#sessionCompleted")
+        const breakCompleted = $("#breakCompleted")
+        const longCompleted = $("#longCompleted")
+        var inputDiv = $('#inputDiv')
+        var timerDiv = $('#timerDiv')
+        var sessionLengthInp = $('#sessionLength')
+        var breakLengthInp = $('#breakLength')
+        var longBreakLengthInp = $('#longBreakLength')
+        var sessionLength = 0;
+            
+            var breakLength = 0;
+            
+            var longBreakLength = 0;
+        var longBreaks = 0
+        var shortBreaks = 0
+        var targetSubjectCount = 0
+        const minutesDisplay = document.getElementById("minutes");
+        const secondsDisplay = document.getElementById("seconds");
+        //const startButton = document.getElementById("startBtn");
+        const pauseButton = document.getElementById("pauseBtn");
+        const resetButton = document.getElementById("restartBtn");
+        const resumeButton = document.getElementById("resumeBtn");
+        const setButton = document.getElementById("settingsBtn");
+        var subjectRadioDiv = document.getElementById("subjectRadio");
+        var remainingSeconds =0
+        const dots = $("#dots")
+            var targetSubjectName = 0
+            var targetSubjectNum = 0
+        //updates the clock
+        function updateInterfaceTime() {
+                var minutes = Math.floor(remainingSeconds / 60);
+                var seconds = Math.floor(remainingSeconds % 60);
+                minutesDisplay.textContent = minutes.toString().padStart(2, "0");
+                secondsDisplay.textContent = seconds.toString().padStart(2, "0");
+            }
+            //update the session stats
+            function updateStatInterface() {
+                sessionCompleted.text(`Sessions completed till now: ${sessionCount} `)
+                breakCompleted.text(`breaks completed till now: ${shortBreaks} `)
+                longCompleted.text(`Sessions completed till now: ${longBreaks} `)
+            }
+            //stop the timer called when pressing the pause or the clock ended
+            function stopTimer() {
+                dots.toggleClass("animate-flicker")
+                clearInterval(interval)
+
+            }
+            //when the pause is pressed
+
+            function pauseTimer() {
+                //dots.toggleClass("animate-flicker")
+                
+                pauseButton.classList.add("disappear");
+                //startButton.classList.add("disappear");
+                resumeButton.classList.remove("disappear");
+                console.log(remainingSeconds)
+                stopTimer()
+
+
+
+            }
+            //obvious
+            function resumeTimer() {
+                pauseButton.classList.remove("disappear");
+                //startButton.classList.add("disappear");
+                resumeButton.classList.add("disappear");
+
+                startTimer()
+            }
+            //not done yet
+            function restartTimer() {
+                //inputDiv.toggleClass('disappear')
+                timerDiv.addClass('disappear')
+            }
+            function updateSubjectSession() {
+                //there is the var target sub holding the target Subject to update its session
+                //the app will display the number of sessions for each subject
+                //when the user selects a subject this session will be added to it
+                //
+                targetSubjectName = targetSubject.classList[0]
+                targetSubjectNum = targetSubject.id
+                subjectSessionCounts[targetSubjectNum]++
+
+                targetSubjectCount = subjectSessionCounts[targetSubjectNum]
+                console.log(targetSubjectName,targetSubjectNum,'target sub name and number')
+                document.querySelector(`#${targetSubjectName}`).textContent = `${targetSubjectName} session: ${targetSubjectCount}`
+                console.log(targetSubjectName, targetSubjectNum, theChart)
+                theChart.data.labels = subjectNames;
+                theChart.data.datasets[0].data = subjectSessionCounts;
+                theChart.data.datasets[0].backgroundColor = chartBackColorList;
+                theChart.update();
+                graphTwo.data.labels = subjectNames;
+                graphTwo.data.datasets[0].data = subjectSessionCounts;
+                //graphTwo.data.datasets[0].backgroundColor= chartBackColorList;
+                graphTwo.update();
+
+
+            }
+
+        function startTimer() {
+                //dots.toggleClass("animate-flicker")
+                if (remainingSeconds == 0) {
+                    return;
+                } else {
+                    currentStatePara.text("Focus Time, Get it Done!")
+                    dots.toggleClass("animate-flicker")
+                    //startButton.classList.add("disappear")
+                    interval = setInterval(() => {
+                        remainingSeconds = remainingSeconds - 1;
+                        updateInterfaceTime();
+                        if (remainingSeconds == 0) {
+                            sessionSound.play()
+                            stopTimer();
+                            sessionCount = sessionCount + 1
+                            updateSubjectSession()
+                            updateStatInterface()
+                            console.log(`session count ${sessionCount}`)
+                            if (sessionCount % 4 == 0) {
+                                //go to long break
+                                currentStatePara.text("You`ve worked hard, Time for a Long break")
+                                remainingSeconds = longBreakLength * 60
+                                interval = setInterval(() => {
+                                    remainingSeconds = remainingSeconds - 1;
+                                    updateInterfaceTime();
+                                    if (remainingSeconds == 0) {
+                                        breakSound.play()
+                                        stopTimer();
+                                        longBreaks = longBreaks + 1
+                                        updateStatInterface()
+                                        console.log(`long breaks count ${longBreaks}`)
+                                        remainingSeconds = sessionLength * 60
+                                        startTimer()
+
+                                    }
+
+                                }, 1000)
+                            } else {
+                                //go to short break
+                                currentStatePara.text("You`ve worked hard, Time for a short break")
+                                remainingSeconds = breakLength * 60
+                                console.log(`break remainig secondes ${breakLength}`)
+                                interval = setInterval(() => {
+                                    remainingSeconds = remainingSeconds - 1;
+                                    updateInterfaceTime();
+                                    if (remainingSeconds == 0) {
+                                        breakSound.play()
+                                        stopTimer();
+                                        shortBreaks = shortBreaks + 1
+                                        updateStatInterface()
+                                        console.log(`short breaks ${shortBreaks}`)
+                                        remainingSeconds = sessionLength * 60
+                                        startTimer()
+
+                                    }
+
+                                }, 1000)
+                            }
+                        }
+
+                    }, 1000);
+                }
+            }
+            
+        function graphinit() {
+                const ctx = document.getElementById('myChart');
+
+
+                theChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: subjectNames,
+                        datasets: [{
+                            label: '# of sessions',
+                            data: subjectSessionCounts,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                console.log(theChart, "the chart")
+            }
+            //initiates another graph
+            function graphinitTwo() {
+                const two = document.getElementById('secondChart');
+
+
+                graphTwo = new Chart(two, {
+                    type: 'doughnut',
+                    data: {
+                        labels: subjectNames,
+                        datasets: [{
+                            label: subjectNames,
+                            data: subjectSessionCounts,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 205, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(201, 203, 207, 0.2)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    }
+
+                });
+            }
+            //drawing the empty charts after the save btn get clicked
+            Chart.defaults.color = '#fb773c';
+            graphinit()
+            graphinitTwo()
+
+        // adding input divs for subjects as many the user clicks on the btn
+        function addSubjectInput() {
+            newInputDiv = document.createElement("div")
+            newInputDiv.classList.add("gridDiv",'elem')
+           
+
+
+            newInputDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg"  class="inputSvg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M320-160h320v-120q0-66-47-113t-113-47q-66 0-113 47t-47 113v120Zm160-360q66 0 113-47t47-113v-120H320v120q0 66 47 113t113 47ZM160-80v-80h80v-120q0-61 28.5-114.5T348-480q-51-32-79.5-85.5T240-680v-120h-80v-80h640v80h-80v120q0 61-28.5 114.5T612-480q51 32 79.5 85.5T720-280v120h80v80H160Z"/></svg>
+          <h5 class="">Enter the subject Name</h5>
+          <input class="rounded-pill inputStyle " type="text" name="subject${subIndex}" id="subject${subIndex}" >`
+            
+            var subInput = newInputDiv.children[2]
+            subjectList.push(newInputDiv.children[2].id)
+            document.getElementById("whereInputIS").appendChild(newInputDiv)
+            
+            
+            //diffrent aproach to get the input using  listiners
+            //subInput.addEventListener('input', () => {
+            //var inputValue = subInput.value;
+
+            //console.log('Input value:', inputValue, subjectList);
+            //});
+            subIndex = subIndex + 1
+        }
+
+        //this function gets acivated when clicking save btn
+
+        function fetchData() {
+            document.getElementById("save").textContent="Edit"
+            //updating the data
+            sessionLength = sessionLengthInp[0].value;
+            breakLength = breakLengthInp[0].value;
+            longBreakLength = longBreakLengthInp[0].value;
+            //inputDiv.toggleClass('disappear')
+            timerDiv.removeClass('disappear')
+            var interval = null
+            remainingSeconds = sessionLength * 60
+            
+            //makes a list for subject names and color list for the chart
+            function getSubjectNamesAndColors(){
+                
+                for (let i = 0; i < subjectList.length; i++) {
+                    if (subjectNames.includes(document.getElementById(`subject${i}`).value)) {
+                        continue;
+                    } else {
+                        subjectNames.push(document.getElementById(`subject${i}`).value)
+                        chartBackColorList.push('rgba(255, 159, 64, 0.2)')
+                        console.log(subjectNames,'the subject names in the loop')  
+                    }
+                    
+                }
+            }
+            getSubjectNamesAndColors()
+
+            
+            //console.log(subjectRadioDiv)
+
+            //adds the radio input for subjects the user inputted and adds event listeners for the input
+            function addRadioSub() {
+                console.log(subjectList,"subject list in add radio fun")
+                for (let sub = 0; sub < subjectNames.length; sub++) {
+                    if (subjectRadioDiv.contains(document.getElementById(`1${subjectNames[sub]}`))) {
+                        continue;
+                    } else {
+                    var inputBox = document.createElement("div")
+                    inputBox.id=`1${subjectNames[sub]}`
+                    inputBox.innerHTML = `
+                    <input  type="radio" name="subject" id="${sub}" value=""  class="${subjectNames[sub]} radio-button" >
+                    <label for='${sub}' class='subLabel'>
+                    ${subjectNames[sub]}
+                    <label>`
+
+                    subjectRadioDiv.appendChild(inputBox)
+                    console.log(inputBox.children[0])
+                    inputBox.children[0].addEventListener('click', getSelectedSubject);
+                    }
+                    
+
+                }
+            }
+
+            //selects the clicked subject radio
+            function getSelectedSubject() {
+                targetSubject = document.querySelector('input[name="subject"]:checked');
+                console.log(targetSubject)
+            }
+            //creates the list items for the subjects and add them to the parent ul
+            function addSubsToUl(){
+                
+                for (let ind = 0; ind < subjectNames.length; ind++) {
+                    parent=document.getElementById("stats-ul")
+                    child=document.getElementById(`${subjectNames[ind]}`)
+                    console.log(parent,child,parent.contains(child),'the list checking')
+                    if (parent.contains(child)) {
+                        continue;
+                    } else {
+                    var SubjectListItem = document.createElement("li");
+                    SubjectListItem.textContent = `${subjectNames[ind]}`
+                    SubjectListItem.id = `${subjectNames[ind]}`
+                    parent.appendChild(SubjectListItem)
+                    }
+                    
+                    
+                
+                }
+            }
+            addSubsToUl()
+            
+
+            // Populate the array with initial session counts
+            function addSubsNamesToSubjectNamesList(){
+                for (let i = 0; i < subjectNames.length; i++) {
+                    subjectSessionCounts.push(0);
+                }
+            }
+            addSubsNamesToSubjectNamesList()
+
+            console.log('session list', subjectSessionCounts)
+            //updates the graphs and the list items for subjects with the new session count
+            
+            //calling to add the radios needs changing
+            addRadioSub()
+            $(".elem").addClass('disappear')
+            //viewing the stats div
+            $("#statstics").removeClass("disappear")
+            
+            
+            
+            
+
+
+            function settingsRev() {
+                //inputDiv.toggleClass('disappear')
+            }
+            //start the timer when the start btn is pressed
+            //startButton.addEventListener("click",startTimer);
+            pauseButton.addEventListener("click", pauseTimer);
+            resumeButton.addEventListener("click", resumeTimer);
+            //resetButton.addEventListener("click", );
+            setButton.addEventListener("click", settingsRev)
+            
+
+
+
+        }
+    </script>
+</body>
+
+</html>

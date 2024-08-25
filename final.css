@@ -1,0 +1,351 @@
+body{
+    background-color: #140128;
+    font-family: "Montserrat";
+}
+#settingsBtn{
+    display: none;
+}
+#allContent{
+    margin-left: 12%;
+    margin-right: 12%;
+}
+
+.svgBtn{
+    width: 50px;
+    height: 60px;
+}
+#timerDiv{
+    font-family: "Montserrat";
+    background-color: #fc6600;
+    padding: 20px;
+    display: flex;
+    border-radius: 40px;
+    margin: 85px;
+    justify-content: space-around;
+}
+
+#timerDisplay{
+    font-size: 3rem;
+    font-weight: 800;
+
+}
+#logo{
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 700;
+
+}
+#logoDiv{
+    display: flex;
+    align-items: center;
+
+}
+#timerDiv{
+    display: flex;
+    align-items: center;
+}
+
+#currentStateParaDiv{
+    font-family: "Montserrat";
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    color: #fb773c;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-top: 60px;
+}
+#currentStatePara{
+    max-width: 500px;
+    text-align: center;
+}
+#subjectRadio{
+    font-family: "Montserrat";
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 500px;
+    gap: 50px;
+}
+#RadioFlex{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="radio"] {
+    
+    
+    
+  }
+
+.subLabel{
+    color: #fb773c;
+    font-size: 1.5rem;
+    border: 3px solid #fb773c;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+input[type="radio"]:checked + label {
+    background-color:#fb773c;
+    color: #140128;
+}
+
+input[type="radio"]:focus + label {
+    border: 2px dashed #444;
+}
+
+#inputDiv{
+    font-family: "Montserrat";
+    border: 5px solid #fb773c;
+    border-radius: 80px;
+    margin-top: 150px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+.textHeader{
+    font-family: "Montserrat";
+    color: #fb773c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#whereInputIS{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 40px;
+    margin-top: 60px;
+}
+.gridDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fb773c;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Firefox 1  */
+}
+.inputStyle{
+    width: 100px;
+    background-color: transparent;
+    border: 2px solid #fb773c;
+    color: #fb773c;
+    text-align: center;
+}
+
+.Setbtns{
+    margin-top: 70px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-top: 4px solid #fb773c;
+    align-items: center;
+}
+
+.btn{
+    border: 3px solid #fb773c;
+    color: #fb773c;
+    font-weight: 600;
+    border-radius: 30px;
+}
+
+.btn:hover{
+    background-color: #fb773c;
+    transition: 0.7s;
+}
+.btn:focus{
+    box-shadow: 0 0 0 1px orange;
+    transition: 0.7s;
+}
+.vLine{
+    border-right: 4px solid #fb773c;
+    border-left: 4px solid #fb773c;
+    width: 50%;
+    height: 240px;
+    margin-left: 25%;
+}
+#statstics{
+    border: 5px solid #fb773c;
+    border-radius: 80px;
+    
+    margin-left: 60px;
+    margin-right: 60px;
+}
+#stats-ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 55px;
+    color: #fb773c;
+}
+li{
+    list-style: circle;
+    list-style-position: inside;
+}
+#chartContainer{
+    border: 5px solid #fb773c;
+    display: flex;
+    border-radius: 80px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /*margin-left: 60px;
+    margin-right: 60px;*/
+}
+.chartContainer {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+    
+    
+    width: 80vb;
+  }
+  canvas {
+    border: 3px solid #fb773c;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    
+}
+
+    h5{
+        max-width: 100px;
+        text-align: center;
+    }
+  @media (max-width:1402px) {
+    #chartContainer{
+        flex-direction: column;
+    }
+  }
+
+  @media (max-width:815px) {
+    #timerDisplay{
+        font-size: 2rem;
+    }
+    #logo{
+        font-size: 1.5rem;
+    }
+    h5{
+        font-size: 1rem;
+    }
+  }
+
+  @media (max-width:710px) {
+    #logo{
+        display: none;
+    }
+  }
+  @media (max-width:625px) {
+    #whereInputIS{
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+
+ /* .disappear{
+    transition: opacity 200ms, display 200ms;
+    display: none;
+    opacity: 0;
+    
+}*/
+@keyframes name-of-animation {
+    0%    { opacity: 0; }
+    
+    100%  { opacity: 1; }
+    
+  }
+  
+  
+  
+  .disappear {
+    
+    display: none !important;
+    
+  }
+  .elem {
+    animation: slidein 0.5s forwards;
+  }
+  
+  @keyframes slidein {
+    from {
+      height: 0px;
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      height:134px; /*This will change for each element */
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width:883px) {
+    .chartContainer{
+        width: 40vb;
+    }
+  }
+
+  @media (max-width:585px) {
+    .btn{
+        font-size: 0.75rem;
+    }
+    ul{
+        padding: 0;
+    }
+    .vLine{
+        margin-left: 44%;
+        width: 15%;
+    }
+    #inputDiv{
+        border-radius: 40px;
+        
+    }
+    #statstics{
+        border-radius: 40px;
+    }
+  }
+  @media (max-width:500px) {
+    #timerDiv{
+        flex-direction: column;
+        margin: 40px;
+    }
+    #currentStatePara{
+        font-size: 2rem;
+        max-width: 330px;
+    }
+    #inputDiv{
+        border-radius: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    #statstics{
+        border-radius: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+        
+    }
+    #subjectRadio{
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .subLabel{font-size: 1rem;}
+    #chartContainer{
+        border-radius: 20px;
+    }
+  }
